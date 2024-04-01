@@ -25,8 +25,9 @@ void initialize(StInf *Ptr1, StInf *Ptr2) {
 void sort(StInf * Ptr1, StInf * Ptr2) {
     int i;
     StackType * temp;
+    Ptr2->STptr = temp;
     for(i = 0; i < Ptr1->count; i++) {
-
+        
     }
 }
 
