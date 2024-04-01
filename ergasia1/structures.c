@@ -5,5 +5,5 @@ typedef int STitems;
 
 typedef struct stack {
     STitems item;
-    struct stack *Stptr;
-} StackT;
+    struct stack *STptr;
+} StackType;
