@@ -4,24 +4,38 @@
 
 int stacksort(Stack *St1)            // St1 is the pointer to the address of the head pointer of the Stack
 {                                    // that neads sorting (this function requires for the veriable count to have been calculated earlier int the client program).
-    StackNode *tmpStack = (StackNode *)malloc(sizeof(StackNode)); // here we use malloc to acquire the neaded memory from the head.
-    Stack temp1;
-    temp1.count = St1->count;
-    temp1.Itemlist = St1->ItemList;
-    StackNode *temp2;
-    tmpStack->Item = temp1.ItemList->Item;
+    StackNode *tmpStack;             // here we use malloc to acquire the neaded memory from the head.
+    StackNode *temp1, *temp2;
+    temp1 = St1->ItemList;
+    ItemType tmpItem = temp1->Item;
+    temp2 = (StackNode *)malloc(sizeof(StackNode));
+    tmpStack = temp2;
+    tmpStack->Item = tmpItem;
     tmpStack->Link = NULL;
-    temp1.count--;
-    temp1.ItemList = St1->ItemList->Link; 
-    temp2 = tmpStack;
+    St1->Count--;
+    St1->ItemList = St1->ItemList->Link; 
+    free(temp1);
+    temp1 = St1->ItemList;
+    temp2 = NULL;
 
-    while(temp1.count != 0) {
-
-        if(temp1.ItemList->Item > temp2->Item)
+    while(St1->Count != 0)
+    {
+        if(St1->Itemlist->Item >= tmpStack->Item)
         {
-            temp2->Link = (StackNode *)malloc(sizeof(StackNode));
-            temp2 = temp2->Link;
-            temp2->Item = temp1.ItemList->Item;
+            temp2 = (StackNode *)malloc(sizeof(StackNode));
+            tmpItem = temp1->Item;
+            temp2->Item = tmpItem;
+            temp2->Link = impStack;
+            temp2 = NULL;
+            St1->Count--;
+            St1->Itemlist = St1->ItemList->Link;
+            free(temp1);
+            temp1 = St1->ItemList;
+        }
+        else
+        {
+            temp1 = (StackNode *)malloc(sizeof(StackNode));
+            
         }
     }
 
@@ -29,3 +43,8 @@ int stacksort(Stack *St1)            // St1 is the pointer to the address of the
 //I AM STUPID...I AM STUPID...LIKE CHARLES LECLERC IN MONACO...
 //MY BRAIN IS ON FIREEE!!! OH YEAH!!!
 //I AM CURRENTELY UNDER THE WATER...PLEASE HELP...
+//I AM A HIGH PERFORMANCE ATHETE, ATHETE SWEAT, SWEAT BABY, KE KE KE, RHAA, SWEAT SWEAT, OUH OUH -Daniel Ricciardo.
+//Oh no you ruined my icecream!!! -Lando Norris.
+//I am a smoooth operator!!! Smoooth operator!!! -Carlso Sainz.
+//I am the bad guy -Fernando Alonso.
+//I am stupid...I am stupid -Charles Leclerc.
