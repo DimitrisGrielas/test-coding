@@ -5,7 +5,7 @@
 
 struct StackNode 
 {
-    char Item;
+    ItemType Item;
     struct StackNode *Link;
 };
 
@@ -46,4 +46,83 @@ void test_Input(char * test)
         printf("%c", test[i]);
     }
     printf("\n");
+}
+
+char *parenthesis(char *statement)
+{
+    StackPtr St1, St2;
+    St1 = initialize();
+    St2 = initialize();
+    int i = 0;
+
+    while(statement[i] != '\0')
+    {
+        ItemType inf;
+        int count = 0;
+
+        if(statement[i] != ')')
+        {
+            push(&St1, statement[i]);           
+        } 
+        else
+        {
+            push(&St2, ')');
+            while(St1.STptr != NULL)
+            {
+                inf = pop(&St1);
+                push(&St2, inf);
+            }
+            push(&St1, '(');
+
+            while(St2.STptr != NULL)
+            {
+                inf = pop(&St2);
+                push(&St1, inf);
+            }
+        }
+        i++;
+    }
+}
+
+StackPtr initialize(void)
+{
+    StackPtr *ST;
+    ST->STptr = NULL;
+    return *ST;
+}
+
+void push(StackPtr *ST, ItemType Item)
+{   
+    Stack *temp;
+    temp = (Stack *)malloc(sizeof(Stack));
+    temp->Item = Item;
+    if(ST->STptr == NULL)
+    {
+        temp->Link = NULL;
+        ST->STptr = temp;
+    }
+    else
+    {
+        temp->Link = ST->STptr;
+        ST->STptr = temp;
+    }
+}
+
+ItemType pop(StackPtr *ST)
+{
+    if(ST->STptr == NULL)
+    {
+        printf("ERROR: The stack is empty!\n");
+    }
+    else
+    {
+        ItemType inf;
+        Stack *temp;
+        temp = ST->STptr;
+        ST->STptr = ST->STptr->Link;
+        inf = temp->Item;
+        temp->Link = NULL;
+        free(temp);
+        return inf;
+    }
 }
