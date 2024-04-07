@@ -2,17 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "parenthesis.h"
-
-struct StackNode 
-{
-    ItemType Item;
-    struct StackNode *Link;
-};
-
-struct StackPtr
-{
-    struct Stack *STptr;
-};
+#include "StackTypes.h"
 
 char * Input(void)
 {
@@ -58,7 +48,6 @@ StackPtr parenthesis(char *statement)
     while(statement[i] != '\0')
     {
         ItemType inf;
-        int count = 0;
 
         if(statement[i] != ')')
         {

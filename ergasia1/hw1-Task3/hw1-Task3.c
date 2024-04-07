@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "parenthesis.h"
+#include "StackTypes.h"
 
 int main(void) 
 {
