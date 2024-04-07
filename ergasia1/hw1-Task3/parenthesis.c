@@ -48,7 +48,7 @@ void test_Input(char * test)
     printf("\n");
 }
 
-char *parenthesis(char *statement)
+StackPtr parenthesis(char *statement)
 {
     StackPtr St1, St2;
     St1 = initialize();
@@ -82,6 +82,7 @@ char *parenthesis(char *statement)
         }
         i++;
     }
+    return St1;
 }
 
 StackPtr initialize(void)
